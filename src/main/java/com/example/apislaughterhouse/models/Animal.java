@@ -1,14 +1,12 @@
-package com.example.slaugherhouse.models;
+package com.example.apislaughterhouse.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
+@Table(name="animals")
 public class Animal {
 
 
@@ -16,19 +14,21 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private Date date;
 
+    @Column(name = "weight")
     private double weight;
 
+    @Column(name = "registrationNumber")
     private String registrationNumber;
 
+    @Column(name = "origin")
     private String origin;
 
 
-    public Animal(long id, Date date, double weight, String registrationNumber, String origin){
+    public Animal(long id, double weight, String registrationNumber, String origin){
 
         this.id= id;
-        this.date =date;
+
         this.weight=weight;
         this.registrationNumber=registrationNumber;
         this.origin=origin;
@@ -42,9 +42,7 @@ public class Animal {
         return weight;
     }
 
-    public Date getDate() {
-        return date;
-    }
+
 
     public Long getId() {
         return id;
@@ -58,9 +56,7 @@ public class Animal {
         return registrationNumber;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
+
 
     public void setId(Long id) {
         this.id = id;
