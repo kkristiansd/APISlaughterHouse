@@ -45,7 +45,9 @@ public class Animal {
         return weight;
     }
 
-
+    public LocalDate getDate() {
+        return date;
+    }
 
     public int getId() {
         return id;
@@ -75,5 +77,9 @@ public class Animal {
 
     public void setWeight(Double weight) {
         this.weight = weight;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 }
