@@ -14,7 +14,7 @@ public interface AnimalService {
 
     Iterable<Animal> findAllItr();
 
-    Optional<Animal> findById(Long id);
+    Optional<Animal> findById(int id);
     Animal update(Animal animal);
-    void deleteById(Long id);
+    void deleteById(int id);
 }

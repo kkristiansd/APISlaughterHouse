@@ -12,8 +12,10 @@ public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
+    @Column (name="date")
+    private LocalDate date;
 
     @Column(name = "weight")
     private double weight;
@@ -25,13 +27,14 @@ public class Animal {
     private String origin;
 
 
-    public Animal(long id, double weight, String registrationNumber, String origin){
+    public Animal(int id, double weight, String registrationNumber, String origin, LocalDate date){
 
         this.id= id;
 
         this.weight=weight;
         this.registrationNumber=registrationNumber;
         this.origin=origin;
+        this.date=date;
     }
 
     public Animal() {
@@ -44,7 +47,7 @@ public class Animal {
 
 
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -58,7 +61,7 @@ public class Animal {
 
 
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

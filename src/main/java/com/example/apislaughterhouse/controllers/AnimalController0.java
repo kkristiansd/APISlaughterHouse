@@ -22,7 +22,7 @@ public class AnimalController0 {
             method = RequestMethod.GET, //
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE} )
     @ResponseBody
-    public Animal0 getOrderById(@PathVariable Long id) {
+    public Animal0 getAnimalById(@PathVariable int id) {
         return animalRepo.findById(id);
     }
 
@@ -30,7 +30,7 @@ public class AnimalController0 {
             method = RequestMethod.GET, //,
             produces = {MediaType.APPLICATION_JSON_VALUE} )
     @ResponseBody
-    public List<Animal0> getAllOrders() {
+    public List<Animal0> getAllAnimals() {
         List<Animal0> list = animalRepo.findAll();
         return list;
     }
@@ -38,8 +38,8 @@ public class AnimalController0 {
     @RequestMapping(value = "/animals",
             method = RequestMethod.POST)
     @ResponseBody
-    public Animal0 createOrder(@RequestBody Animal0 order) {
-        return animalRepo.save(order);
+    public Animal0 createAnimal(@RequestBody Animal0 animal) {
+        return animalRepo.save(animal);
     }
 
 

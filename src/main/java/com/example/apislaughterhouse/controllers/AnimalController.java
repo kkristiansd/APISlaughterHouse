@@ -2,6 +2,7 @@ package com.example.apislaughterhouse.controllers;
 
 import com.example.apislaughterhouse.models.Animal;
 import com.example.apislaughterhouse.services.AnimalServiceImpl;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,7 @@ public class AnimalController {
 
     // CRUD endpoint follows
 
-    // http://localhost:8090/api/orders
+
     @PostMapping("/animals")
     public ResponseEntity<Object> createAnimal(@RequestBody Animal animal){
         try {
@@ -39,17 +40,17 @@ public class AnimalController {
     @GetMapping("/animals")
     public ResponseEntity<Object> getAllAnimals(){
         try {
-            List<Animal> orders = animalService.findAll();
-            return new ResponseEntity<Object>(orders, HttpStatus.OK);
+            List<Animal> animals = animalService.findAll();
+            return new ResponseEntity<Object>(animals, HttpStatus.OK);
         } catch (Exception ex) {
             logger.error(ex.getMessage(), ex);
             return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
         }
     }
 
-    //@GetMapping("/orders/{id}")  // can include MediaType as well
+
     @GetMapping(value="/animals/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> getAnimalById(@PathVariable("id") Long id){
+    public ResponseEntity<Object> getAnimalById(@PathVariable("id") int id){
         try {
             Optional<Animal> animal = animalService.findById(id);
             if (animal.isPresent()) {
@@ -64,7 +65,7 @@ public class AnimalController {
     }
 
     @PutMapping("/animals/{id}")
-    public ResponseEntity<Object> updateAnimals(@PathVariable("id") Long id, @RequestBody Animal animal){
+    public ResponseEntity<Object> updateAnimals(@PathVariable("id") int id, @RequestBody Animal animal){
         try {
             animal.setId(id);
             Animal savedAnimal = animalService.update(animal);
@@ -76,7 +77,7 @@ public class AnimalController {
     }
 
     @DeleteMapping("/animals/{id}")
-    public ResponseEntity<HttpStatus> deleteAnimal(@PathVariable("id") Long id){
+    public ResponseEntity<HttpStatus> deleteAnimal(@PathVariable("id") int id){
         try {
             animalService.deleteById(id);
             return new ResponseEntity<HttpStatus>(HttpStatus.OK);

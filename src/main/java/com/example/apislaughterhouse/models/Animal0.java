@@ -2,13 +2,11 @@ package com.example.apislaughterhouse.models;
 
 import jakarta.persistence.Column;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Animal0 {
-    private Long id;
-
-
-
+    private int id;
 
     private double weight;
 
@@ -18,12 +16,14 @@ public class Animal0 {
 
     private String origin;
 
-    public Animal0(Long id, double weight, String registrationNumber, String origin){
-        this.id=id;
+    private LocalDate date;
 
+    public Animal0(int id, double weight, String registrationNumber, String origin, LocalDate date){
+        this.id=id;
         this.weight=weight;
         this.registrationNumber=registrationNumber;
         this.origin=origin;
+        this.date=date;
     }
 
     public void setRegistrationNumber(String registrationNumber) {
@@ -38,11 +38,13 @@ public class Animal0 {
         this.origin = origin;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
     public String getOrigin() {
         return origin;
@@ -52,7 +54,7 @@ public class Animal0 {
         return registrationNumber;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -61,4 +63,7 @@ public class Animal0 {
         return weight;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
 }

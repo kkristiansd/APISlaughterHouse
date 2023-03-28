@@ -29,7 +29,7 @@ public class AnimalServiceImpl implements AnimalService{
     }
 
     @Override
-    public Optional<Animal> findById(Long id) {
+    public Optional<Animal> findById(int id) {
         return animalRepository.findById(id);
     }
 
@@ -39,7 +39,7 @@ public class AnimalServiceImpl implements AnimalService{
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(int id) {
     animalRepository.deleteById(id);
     }
 }
